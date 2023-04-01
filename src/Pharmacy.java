@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pharmacy {
     public static void main(String[] args) {
-        ArrayList<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<>();
         names.add("Anna");
         names.add("Ewa");
         File file2 = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
@@ -14,6 +14,11 @@ public class Pharmacy {
         Pharmacist pharmacist1 = new Pharmacist(names, "Kowalska", LocalDate.of(2000,11,16), 28.00, LocalDate.of(2019,12,1));
         Pharmacist pharmacist2 = new Pharmacist(names, "Nowak", LocalDate.of(2000,11,16), 30.00, LocalDate.of(2019,12,1));
         Pharmacist pharmacist3 = new Pharmacist(names, "Polak", LocalDate.of(2000,11,16), 28.00, LocalDate.of(2019,12,1));
+        Pharmacist pharmacist4 = new Pharmacist();
+        pharmacist4.setNames("Julia", "Karolina");
+        pharmacist4.setSurName("Zawada");
+
+        System.out.println("Pharmacist: " + pharmacist1 + ": " + pharmacist1.isStillWorking());
 
         Drug drug1 = new Drug("Aspirin", 12345, 5, 16.00);
         Drug drug2 = new Drug("Ibuprofen", 12345, 5, 16.00);
