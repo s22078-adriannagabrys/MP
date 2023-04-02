@@ -18,6 +18,7 @@ public class Drug {
         this.price = price;
     }
 
+    //asocjacja zwykła
     public void addMagazine(Magazine newMagazine) {
         if(!magazines.contains(newMagazine)) {
             magazines.add(newMagazine);
@@ -31,6 +32,7 @@ public class Drug {
         }
     }
 
+    //asocjacja z atrybutem
     public void addOrder(Order newOrder) {
         if(!orders.contains(newOrder)) {
             orders.add(newOrder);

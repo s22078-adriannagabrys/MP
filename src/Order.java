@@ -8,6 +8,7 @@ public class Order {
     private List<Drug> drugs;
     private List<CommunityPharmacyEmployee> communityPharmacyEmployees;
 
+    //asocjacja z atrybutem (Order jest klas a asocjacyjną)
     public void addDrug(Drug newDrug) {
         if(!drugs.contains(newDrug)) {
             drugs.add(newDrug);

@@ -8,6 +8,7 @@ public class Magazine {
         this.index = index;
     }
 
+    //asocjacja zwykła
     public void addDrug(Drug newDrug) {
         if(!drugs.contains(newDrug)) {
             drugs.add(newDrug);

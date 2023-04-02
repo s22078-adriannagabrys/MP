@@ -59,6 +59,7 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
         this.names = newNames;
     }
 
+    //asocjacja z atrybutem
     public void addOrder(Order newOrder) {
         if(!orders.contains(newOrder)) {
             orders.add(newOrder);
