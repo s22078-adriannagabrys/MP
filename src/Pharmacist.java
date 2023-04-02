@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Pharmacist extends CommunityPharmacyEmployee{
+public class Pharmacist extends CommunityPharmacyEmployee implements Serializable{
     private double degreeBonus = 5.00;
     private LocalDate additionDate;
     private String title;

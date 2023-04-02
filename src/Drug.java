@@ -8,11 +8,41 @@ public class Drug {
     private double weight;
     private double price;
 
+    private List<Magazine> magazines = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
+
     public Drug(String drugName, int indexNumber, double weight, double price) {
         this.drugName = drugName;
         this.indexNumber = indexNumber;
         this.weight = weight;
         this.price = price;
+    }
+
+    public void addMagazine(Magazine newMagazine) {
+        if(!magazines.contains(newMagazine)) {
+            magazines.add(newMagazine);
+            newMagazine.addDrug(this);
+        }
+    }
+    public void removeMagazine(Magazine toRemove) {
+        if(magazines.contains(toRemove)) {
+            magazines.remove(toRemove);
+            toRemove.removeDrug(this);
+        }
+    }
+
+    public void addOrder(Order newOrder) {
+        if(!orders.contains(newOrder)) {
+            orders.add(newOrder);
+            newOrder.addDrug(this);
+        }
+    }
+
+    public void removeOrder(Order toRemove) {
+        if(orders.contains(toRemove)) {
+            orders.remove(toRemove);
+            toRemove.removeDrug(this);
+        }
     }
 
     public String getDrugName() {
@@ -25,9 +55,12 @@ public class Drug {
 
     @Override
     public String toString() {
-        return "{ " + "drugName='" + drugName + '\'' +
-                ", indexNumber=" + indexNumber +
-                ", weight=" + weight +
-                ", price=" + price + " }";
+        var info = "Drug: " + drugName + "\n";
+
+        for(Magazine magazine : magazines) {
+            info += "   " +  magazine.getIndex() + "\n";
+        }
+
+        return info;
     }
 }

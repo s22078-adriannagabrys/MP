@@ -8,8 +8,8 @@ public class Pharmacy {
         List<String> names = new ArrayList<>();
         names.add("Anna");
         names.add("Ewa");
-        File file2 = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
-        File file = new File("G:\\Adrianna\\Pulpit\\MAS\\MAS.txt.txt");
+        File file = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
+//        File file = new File("G:\\Adrianna\\Pulpit\\MAS\\MAS.txt.txt");
 
         Pharmacist pharmacist1 = new Pharmacist(names, "Kowalska", LocalDate.of(2000,11,16), 28.00, LocalDate.of(2019,12,1));
         Pharmacist pharmacist2 = new Pharmacist(names, "Nowak", LocalDate.of(2000,11,16), 30.00, LocalDate.of(2019,12,1));
@@ -33,12 +33,10 @@ public class Pharmacy {
 
         System.out.println("Sorted list of drugs: " + sortDrugList(drugList));
         try {
-            // Write the extent to the given stream
             var out = new ObjectOutputStream(new FileOutputStream(file));
             Pharmacist.writeExtent(out);
             out.close();
 
-            // Read the extent from the given stream
             var in = new ObjectInputStream(new FileInputStream(file));
             Pharmacist.readExtent(in);
             in.close();

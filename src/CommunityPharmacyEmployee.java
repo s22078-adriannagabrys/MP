@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class CommunityPharmacyEmployee implements Serializable {
+public abstract class CommunityPharmacyEmployee extends AssociationClass implements Serializable{
     private int id;
     public int[] magazineIds;
     //atrybuty obiektowe
@@ -18,12 +18,15 @@ public abstract class CommunityPharmacyEmployee implements Serializable {
     private LocalDate dateOfTerminationOfEmployment; //atrybut opcjonalny
     private LocalDate dateOfEmployment; //atrybut złożony
 
+    private List<Order> orders = new ArrayList<>();
+
     //atrybuty klasowe
     private static boolean hasSecondaryEducation = true;
     private static int minAgeForEmployment = 18;
 
+
     public CommunityPharmacyEmployee() {
-        addEmployee(this);
+
     }
     public CommunityPharmacyEmployee(List<String> names, String surName, LocalDate birthDate, double salaryPerHour, LocalDate dateOfEmployment) {
         this.names = names;
@@ -31,7 +34,6 @@ public abstract class CommunityPharmacyEmployee implements Serializable {
         this.birthDate = birthDate;
         this.salaryPerHour = salaryPerHour;
         this.dateOfEmployment = dateOfEmployment;
-        addEmployee(this);
     }
 
     //metoda abstracyjna
@@ -57,38 +59,18 @@ public abstract class CommunityPharmacyEmployee implements Serializable {
         this.names = newNames;
     }
 
-    //ekstensja
-    private static List<CommunityPharmacyEmployee> extent = new ArrayList<>();
-
-    //metoda klasowa
-    //Ekstensja
-    private static void addEmployee(CommunityPharmacyEmployee communityPharmacyEmployee) {
-        extent.add(communityPharmacyEmployee);
-    }
-
-    private static void removePharmacist(CommunityPharmacyEmployee communityPharmacyEmployee) {
-        extent.remove(communityPharmacyEmployee);
-    }
-
-    public static void showExtent() {
-
-        System.out.println("Extent of the class: " + CommunityPharmacyEmployee.class.getName());
-
-        for (CommunityPharmacyEmployee communityPharmacyEmployee : extent) {
-            System.out.println(communityPharmacyEmployee);
+    public void addOrder(Order newOrder) {
+        if(!orders.contains(newOrder)) {
+            orders.add(newOrder);
+            newOrder.addEmployee(this);
         }
     }
 
-    //trwałość ekstensji
-
-    public static void writeExtent(ObjectOutputStream stream) throws IOException {
-        stream.writeObject(extent);
-        stream.flush();
-        stream.close();
-    }
-
-    public static void readExtent(ObjectInputStream stream) throws IOException, ClassNotFoundException{
-        extent = (ArrayList<CommunityPharmacyEmployee>) stream.readObject();
+    public void removeOrder(Order toRemove) {
+        if(orders.contains(toRemove)) {
+            orders.remove(toRemove);
+            toRemove.removeEmployee(this);
+        }
     }
 
     public String getSurName() {
