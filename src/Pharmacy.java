@@ -2,8 +2,11 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Pharmacy {
+    private Map<Integer, CommunityPharmacyEmployee> employeesQualif = new TreeMap<>();
     public static void main(String[] args) {
         List<String> names = new ArrayList<>();
         names.add("Anna");
@@ -67,4 +70,31 @@ public class Pharmacy {
         return list;
     }
 
+    //asocjacja kwalifikowana
+    //dodanie pracownika do asocjacji
+    public void addEmployeeQualif(CommunityPharmacyEmployee newEmployee) {
+        // Check if we already have the info
+        if(!employeesQualif.containsKey(newEmployee.getId())) {
+            employeesQualif.put(newEmployee.getId(), newEmployee);
+
+            // Add the reverse connection
+            newEmployee.addPharmacy(this);
+        }
+    }
+    //wypisanie połączeń
+    public CommunityPharmacyEmployee findEmployeeQualif(int employeeId) throws Exception {
+        // Check if we have the info
+        if(!employeesQualif.containsKey(employeeId)) {
+            throw new Exception("Unable to find a movie: " + employeeId);
+        }
+
+        return employeesQualif.get(employeeId);
+    }
+    //usunięcie pracownika z asocjacji
+    public void removeEmployee(CommunityPharmacyEmployee toRemove) {
+        if(employeesQualif.containsKey(toRemove.getId())) {
+            employeesQualif.remove(toRemove.getId());
+            toRemove.removePharmacy(this);
+        }
+    }
 }

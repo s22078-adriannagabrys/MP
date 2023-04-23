@@ -8,34 +8,32 @@ public class Order {
     private List<Drug> drugs;
     private List<CommunityPharmacyEmployee> communityPharmacyEmployees;
 
-    //asocjacja z atrybutem (Order jest klas a asocjacyjną)
+    //asocjacja z atrybutem (Order jest klasą asocjacyjną)
     public void addDrug(Drug newDrug) {
         if(!drugs.contains(newDrug)) {
             drugs.add(newDrug);
             newDrug.addOrder(this);
         }
     }
-
     public void removeDrug(Drug toRemove) {
         if(drugs.contains(toRemove)) {
             drugs.remove(toRemove);
             toRemove.removeOrder(this);
         }
     }
-
     public void addEmployee(CommunityPharmacyEmployee newEmployee) {
         if(!communityPharmacyEmployees.contains(newEmployee)) {
             communityPharmacyEmployees.add(newEmployee);
             newEmployee.addOrder(this);
         }
     }
-
     public void removeEmployee(CommunityPharmacyEmployee toRemove) {
         if(communityPharmacyEmployees.contains(toRemove)) {
             communityPharmacyEmployees.remove(toRemove);
             toRemove.removeOrder(this);
         }
     }
+    //faktura zamówienia
 
     @Override
     public String toString() {

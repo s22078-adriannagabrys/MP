@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class CommunityPharmacyEmployee extends AssociationClass implements Serializable{
-    private int id;
-    public int[] magazineIds;
     //atrybuty obiektowe
     private List<String> names; //atrybut powtarzalny
     private String surName; //atrybut prosty, pojedynczy
@@ -18,12 +16,9 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
     private LocalDate dateOfTerminationOfEmployment; //atrybut opcjonalny
     private LocalDate dateOfEmployment; //atrybut złożony
 
-    private List<Order> orders = new ArrayList<>();
-
     //atrybuty klasowe
     private static boolean hasSecondaryEducation = true;
     private static int minAgeForEmployment = 18;
-
 
     public CommunityPharmacyEmployee() {
 
@@ -58,15 +53,23 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
         }
         this.names = newNames;
     }
+    //kwalifikator
+    private int id;
 
-    //asocjacja z atrybutem
+    public int getId() {
+        return id;
+    }
+    public int[] magazineIds;
+    private List<Order> orders = new ArrayList<>();
+    private List<Pharmacy> pharmacies = new ArrayList<>();
+
+    //asocjacja z atrybutem pracownik-zamówienie
     public void addOrder(Order newOrder) {
         if(!orders.contains(newOrder)) {
             orders.add(newOrder);
             newOrder.addEmployee(this);
         }
     }
-
     public void removeOrder(Order toRemove) {
         if(orders.contains(toRemove)) {
             orders.remove(toRemove);
@@ -74,54 +77,38 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
         }
     }
 
+    //asocjacja kwalifikowana pracownik-apteka
+    public void addPharmacy(Pharmacy newPharmacy) {
+        if(!pharmacies.contains(newPharmacy)) {
+            pharmacies.add(newPharmacy);
+            newPharmacy.addEmployeeQualif(this);
+        }
+    }
+    public void removePharmacy(Pharmacy toRemove) {
+        if(pharmacies.contains(toRemove)) {
+            pharmacies.remove(toRemove);
+            toRemove.removeEmployee(this);
+        }
+    }
+
     public String getSurName() {
         return surName;
     }
-
     public void setSurName(String surName) {
         this.surName = surName;
     }
-
     public double getSalaryPerHour() {
         return salaryPerHour;
     }
-
-    public void setSalaryPerHour(double salaryPerHour) {
-        this.salaryPerHour = salaryPerHour;
-    }
-
-    public LocalDate getDateOfEmployment() {
-        return dateOfEmployment;
-    }
-
-    public void setDateOfEmployment(LocalDate dateOfEmployment) {
-        this.dateOfEmployment = dateOfEmployment;
-    }
-
-    public static boolean isHasSecondaryEducation() {
-        return hasSecondaryEducation;
-    }
-
     public static void setHasSecondaryEducation(boolean hasSecondaryEducation) {
         CommunityPharmacyEmployee.hasSecondaryEducation = hasSecondaryEducation;
     }
-
-    public static int getMinAgeForEmployment() {
-        return minAgeForEmployment;
-    }
-
     public static void setMinAgeForEmployment(int minAgeForEmployment) {
         CommunityPharmacyEmployee.minAgeForEmployment = minAgeForEmployment;
     }
-
     public LocalDate getDateOfTerminationOfEmployment() {
         return dateOfTerminationOfEmployment;
     }
-
-    public void setDateOfTerminationOfEmployment(LocalDate dateOfTerminationOfEmployment) {
-        this.dateOfTerminationOfEmployment = dateOfTerminationOfEmployment;
-    }
-
     public String isStillWorking(){
         return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : String.valueOf(getDateOfTerminationOfEmployment()));
     }
