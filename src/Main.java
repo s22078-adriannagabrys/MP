@@ -1,0 +1,62 @@
+import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Pharmacy pharmacy1 = new Pharmacy(1, "Medea");
+        List<String> names = new ArrayList<>();
+        names.add("Anna");
+        names.add("Ewa");
+        File file = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
+//        File file = new File("G:\\Adrianna\\Pulpit\\MAS\\MAS.txt.txt");
+
+        Pharmacist pharmacist1 = new Pharmacist(1, names, "Kowalska", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2019, 12, 1));
+        Pharmacist pharmacist2 = new Pharmacist(2, names, "Nowak", LocalDate.of(2000, 11, 16), 30.00, LocalDate.of(2019, 12, 1));
+        Pharmacist pharmacist3 = new Pharmacist(3, names, "Polak", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2019, 12, 1));
+        Pharmacist pharmacist4 = new Pharmacist();
+        pharmacist4.setNames("Julia", "Karolina");
+        pharmacist4.setSurName("Zawada");
+
+        System.out.println("Pharmacist: " + pharmacist1 + ": " + pharmacist1.isStillWorking());
+
+        Drug drug1 = new Drug("Aspirin", 12345, 5, 16.00);
+        Drug drug2 = new Drug("Ibuprofen", 12345, 5, 16.00);
+        Drug drug3 = new Drug("Paracetamol", 12345, 5, 16.00);
+        Drug drug4 = new Drug("Amoxicilin", 12345, 5, 16.00);
+
+        List<Drug> drugList = new ArrayList();
+        drugList.add(drug1);
+        drugList.add(drug2);
+        drugList.add(drug3);
+        drugList.add(drug4);
+
+//        try {
+//            var out = new ObjectOutputStream(new FileOutputStream(file));
+//            Pharmacist.writeExtent(out);
+//            out.close();
+//
+//            var in = new ObjectInputStream(new FileInputStream(file));
+//            Pharmacist.readExtent(in);
+//            in.close();
+//
+//        } catch (IOException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        Pharmacist.showExtent();;
+
+        pharmacy1.addEmployeeQualif(pharmacist1);
+        pharmacy1.addEmployeeQualif(pharmacist2);
+        pharmacy1.addEmployeeQualif(pharmacist3);
+        System.out.println(pharmacy1);
+
+        pharmacy1.removeEmployee(pharmacist1);
+        System.out.println(pharmacy1);
+
+        System.out.println(pharmacist1.orderDrugs(1, drugList, "Adamed", LocalDate.of(2000, 11, 16), 100, 678987221).toString());
+        System.out.println(pharmacist1);
+
+    }
+}

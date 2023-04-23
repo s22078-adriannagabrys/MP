@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public abstract class CommunityPharmacyEmployee extends AssociationClass implements Serializable{
     //atrybuty obiektowe
+    private int id;
     private List<String> names; //atrybut powtarzalny
     private String surName; //atrybut prosty, pojedynczy
     private LocalDate birthDate; //atrybut konkretny
@@ -23,7 +24,8 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
     public CommunityPharmacyEmployee() {
 
     }
-    public CommunityPharmacyEmployee(List<String> names, String surName, LocalDate birthDate, double salaryPerHour, LocalDate dateOfEmployment) {
+    public CommunityPharmacyEmployee(int id, List<String> names, String surName, LocalDate birthDate, double salaryPerHour, LocalDate dateOfEmployment) {
+        this.id = id;
         this.names = names;
         this.surName = surName;
         this.birthDate = birthDate;
@@ -54,13 +56,13 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
         this.names = newNames;
     }
     //kwalifikator
-    private int id;
 
     public int getId() {
         return id;
     }
     public int[] magazineIds;
     private List<Order> orders = new ArrayList<>();
+    private List<Drug> drugs = new ArrayList<>();
     private List<Pharmacy> pharmacies = new ArrayList<>();
 
     //asocjacja z atrybutem pracownik-zamówienie
@@ -111,6 +113,13 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
     }
     public String isStillWorking(){
         return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : String.valueOf(getDateOfTerminationOfEmployment()));
+    }
+    public Order orderDrugs(int id, List<Drug> drugList, String warehouse, LocalDate date, double price, int NIP){
+        Order newOrder = new Order(id, warehouse, date, price, NIP);
+        for(Drug newDrug : drugList){
+            newOrder.addDrug(newDrug);
+        }
+        return newOrder;
     }
 
 }

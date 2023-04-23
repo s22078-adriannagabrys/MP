@@ -6,51 +6,16 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Pharmacy {
+    private int id;
+    private String name;
     private Map<Integer, CommunityPharmacyEmployee> employeesQualif = new TreeMap<>();
-    public static void main(String[] args) {
-        List<String> names = new ArrayList<>();
-        names.add("Anna");
-        names.add("Ewa");
-        File file = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
-//        File file = new File("G:\\Adrianna\\Pulpit\\MAS\\MAS.txt.txt");
 
-        Pharmacist pharmacist1 = new Pharmacist(names, "Kowalska", LocalDate.of(2000,11,16), 28.00, LocalDate.of(2019,12,1));
-        Pharmacist pharmacist2 = new Pharmacist(names, "Nowak", LocalDate.of(2000,11,16), 30.00, LocalDate.of(2019,12,1));
-        Pharmacist pharmacist3 = new Pharmacist(names, "Polak", LocalDate.of(2000,11,16), 28.00, LocalDate.of(2019,12,1));
-        Pharmacist pharmacist4 = new Pharmacist();
-        pharmacist4.setNames("Julia", "Karolina");
-        pharmacist4.setSurName("Zawada");
-
-        System.out.println("Pharmacist: " + pharmacist1 + ": " + pharmacist1.isStillWorking());
-
-        Drug drug1 = new Drug("Aspirin", 12345, 5, 16.00);
-        Drug drug2 = new Drug("Ibuprofen", 12345, 5, 16.00);
-        Drug drug3 = new Drug("Paracetamol", 12345, 5, 16.00);
-        Drug drug4 = new Drug("Amoxicilin", 12345, 5, 16.00);
-
-        List<Drug> drugList = new ArrayList();
-        drugList.add(drug1);
-        drugList.add(drug2);
-        drugList.add(drug3);
-        drugList.add(drug4);
-
-        System.out.println("Sorted list of drugs: " + sortDrugList(drugList));
-        try {
-            var out = new ObjectOutputStream(new FileOutputStream(file));
-            Pharmacist.writeExtent(out);
-            out.close();
-
-            var in = new ObjectInputStream(new FileInputStream(file));
-            Pharmacist.readExtent(in);
-            in.close();
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        Pharmacist.showExtent();
+    public Pharmacy(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    //metoda klasowa
+//metoda klasowa
 
     public static List<Drug> sortDrugList(List<Drug> list) {
         Drug temp;
@@ -82,13 +47,16 @@ public class Pharmacy {
         }
     }
     //wypisanie połączeń
-    public CommunityPharmacyEmployee findEmployeeQualif(int employeeId) throws Exception {
-        // Check if we have the info
-        if(!employeesQualif.containsKey(employeeId)) {
-            throw new Exception("Unable to find a movie: " + employeeId);
-        }
+    public CommunityPharmacyEmployee findEmployeeQualif(int employeeId){
+        try{
+            if(!employeesQualif.containsKey(employeeId)) {
+                throw new Exception("Unable to find a employee: " + employeeId);
+            }
 
-        return employeesQualif.get(employeeId);
+            return employeesQualif.get(employeeId);
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     //usunięcie pracownika z asocjacji
     public void removeEmployee(CommunityPharmacyEmployee toRemove) {
@@ -96,5 +64,10 @@ public class Pharmacy {
             employeesQualif.remove(toRemove.getId());
             toRemove.removePharmacy(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Pharmacy: " + name + "\n" + "Employees: " + "\n" + employeesQualif;
     }
 }

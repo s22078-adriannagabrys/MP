@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class Pharmacist extends CommunityPharmacyEmployee implements Serializable{
+
     private double degreeBonus = 5.00;
     private LocalDate additionDate;
     private String title;
-    private List<Drug> drug;
     private Integer extraAmountOfDrugsSoldPerMonth;
 
-    public Pharmacist(List<String> names, String surName, LocalDate birthDate, double salaryPerHour, LocalDate dateOfEmployment) {
-        super(names, surName, birthDate, salaryPerHour, dateOfEmployment);
+    public Pharmacist(int id, List<String> names, String surName, LocalDate birthDate, double salaryPerHour, LocalDate dateOfEmployment) {
+        super(id, names, surName, birthDate, salaryPerHour, dateOfEmployment);
     }
     public Pharmacist() {
         super();
