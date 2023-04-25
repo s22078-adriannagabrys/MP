@@ -68,6 +68,6 @@ public class Pharmacy {
 
     @Override
     public String toString() {
-        return "Pharmacy: " + name + "\n" + "Employees: " + "\n" + employeesQualif;
+        return "Pharmacy: " + name + "\n" + "Employees: " + "\n" + employeesQualif + "\n";
     }
 }

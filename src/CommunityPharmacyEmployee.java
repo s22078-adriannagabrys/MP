@@ -114,6 +114,7 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
     public String isStillWorking(){
         return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : String.valueOf(getDateOfTerminationOfEmployment()));
     }
+
     public Order orderDrugs(int id, List<Drug> drugList, String warehouse, LocalDate date, double price, int NIP){
         Order newOrder = new Order(id, warehouse, date, price, NIP);
         for(Drug newDrug : drugList){

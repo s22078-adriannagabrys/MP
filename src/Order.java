@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,8 @@ public class Order {
     private double price;
     private int NIP;
     private List<Drug> drugs = new ArrayList<>();
-    private List<CommunityPharmacyEmployee> communityPharmacyEmployees;
-    private List<Document> dokuments;
+    private List<CommunityPharmacyEmployee> communityPharmacyEmployees = new ArrayList<>();
+    private List<Document> documents = new ArrayList<>();
 
     public Order(int id, String warehouse, LocalDate dateOfOrder, double price, int NIP) {
         this.id = id;
@@ -46,31 +47,41 @@ public class Order {
         }
     }
 
-    public void createDocument(int id){
-        this.addDocument(new Document(id));
+    public void createDocument(int id, Document.DocumentType documentType){
+        this.addDocument(new Document(id, documentType));
     }
     public void addDocument(Document newDocument) {
-        if(!dokuments.contains(newDocument)) {
-            dokuments.add(newDocument);
+        if(!documents.contains(newDocument)) {
+            documents.add(newDocument);
         }
     }
 
     @Override
     public String toString() {
         var info = "Order: " + id + "\n";
+        var documentsInfo = " ";
 
         for(Drug drug : drugs) {
-            info += "   " +  drug.getDrugName() + "\n";
+            info += "   Drug: " + drug.getIndexNumber() + " - " +  drug.getDrugName() + "\n";
         }
 
-        return info;
+        for(Document document : documents) {
+            documentsInfo += "   Document: " + document.id + " - " +  document + "\n";
+        }
+
+        return documents.isEmpty() ? info : info + documentsInfo;
     }
 
-    //faktura zamówienia
     public class Document {
         private int id;
+        private String name;
+        private String body;
+        public enum DocumentType {
+            INVOICE,
+            PAYMENTCONFIRMATION
+        }
 
-        public Document(int id) {
+        public Document(int id, DocumentType documentType) {
             this.id = id;
         }
 

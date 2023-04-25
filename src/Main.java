@@ -20,18 +20,21 @@ public class Main {
         pharmacist4.setNames("Julia", "Karolina");
         pharmacist4.setSurName("Zawada");
 
-        System.out.println("Pharmacist: " + pharmacist1 + ": " + pharmacist1.isStillWorking());
+//        System.out.println("Pharmacist: " + pharmacist1 + ": " + pharmacist1.isStillWorking());
 
         Drug drug1 = new Drug("Aspirin", 12345, 5, 16.00);
-        Drug drug2 = new Drug("Ibuprofen", 12345, 5, 16.00);
-        Drug drug3 = new Drug("Paracetamol", 12345, 5, 16.00);
-        Drug drug4 = new Drug("Amoxicilin", 12345, 5, 16.00);
+        Drug drug2 = new Drug("Ibuprofen", 30001, 5, 16.00);
+        Drug drug3 = new Drug("Paracetamol", 56723, 5, 16.00);
+        Drug drug4 = new Drug("Amoxicilin", 15243, 5, 16.00);
 
         List<Drug> drugList = new ArrayList();
         drugList.add(drug1);
         drugList.add(drug2);
         drugList.add(drug3);
         drugList.add(drug4);
+
+        Magazine magazine1 = new Magazine(1);
+
 
 //        try {
 //            var out = new ObjectOutputStream(new FileOutputStream(file));
@@ -47,6 +50,21 @@ public class Main {
 //        }
 //        Pharmacist.showExtent();;
 
+        //asocjacja zwykła
+
+        System.out.println("Asocjacja zwykła Magazine-Drug");
+        magazine1.addDrug(drug1);
+        magazine1.addDrug(drug2);
+        magazine1.addDrug(drug3);
+        magazine1.addDrug(drug4);
+        System.out.println(magazine1);
+
+        magazine1.removeDrug(drug1);
+        System.out.println(magazine1);
+
+        //asocjacja kwalifikowana
+
+        System.out.println("Asocjacja kwalifikowana CommunityPharmacyEmployee-Pharmacy (kwalifikator id)");
         pharmacy1.addEmployeeQualif(pharmacist1);
         pharmacy1.addEmployeeQualif(pharmacist2);
         pharmacy1.addEmployeeQualif(pharmacist3);
@@ -55,8 +73,17 @@ public class Main {
         pharmacy1.removeEmployee(pharmacist1);
         System.out.println(pharmacy1);
 
-        System.out.println(pharmacist1.orderDrugs(1, drugList, "Adamed", LocalDate.of(2000, 11, 16), 100, 678987221).toString());
-        System.out.println(pharmacist1);
+        //asocjacja z atrybutem
 
+        System.out.println("Asocjacja z atrybutem CommunityPharmacyEmployee-Order-Drug");
+        Order order1 = pharmacist1.orderDrugs(1, drugList, "Adamed", LocalDate.of(2000, 11, 16), 100, 678987221);
+        System.out.println(order1);
+
+        //kompozycja
+
+        System.out.println("Kompozycja Order-Dokument");
+        order1.createDocument(1, Order.Document.DocumentType.INVOICE);
+        order1.createDocument(2, Order.Document.DocumentType.INVOICE);
+        System.out.println(order1);
     }
 }

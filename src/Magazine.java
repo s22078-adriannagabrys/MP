@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Magazine {
-    private List<Drug> drugs;
+    private List<Drug> drugs = new ArrayList<>();
     private int index;
 
     public Magazine(int index) {
