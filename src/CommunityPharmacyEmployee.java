@@ -39,8 +39,12 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
 
     //metoda obiektowa
 
-    public List<String> getNames() {
-        return names;
+    public String getNames() {
+        String allNames = " ";
+        for(String name: names){
+            allNames+= name + " ";
+        }
+        return allNames;
     }
 
     public void setNames(List<String> names) {
@@ -115,10 +119,11 @@ public abstract class CommunityPharmacyEmployee extends AssociationClass impleme
         return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : String.valueOf(getDateOfTerminationOfEmployment()));
     }
 
-    public Order orderDrugs(int id, List<Drug> drugList, String warehouse, LocalDate date, double price, int NIP){
-        Order newOrder = new Order(id, warehouse, date, price, NIP);
+    public Order orderDrugs(int id, List<Drug> drugList, String warehouse, LocalDate date, LocalDate paymentDate, double price, int NIP){
+        Order newOrder = new Order(id, warehouse, date, paymentDate, price, NIP);
         for(Drug newDrug : drugList){
             newOrder.addDrug(newDrug);
+            newOrder.addEmployee(this);
         }
         return newOrder;
     }

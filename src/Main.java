@@ -1,6 +1,7 @@
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -14,8 +15,8 @@ public class Main {
 //        File file = new File("G:\\Adrianna\\Pulpit\\MAS\\MAS.txt.txt");
 
         Pharmacist pharmacist1 = new Pharmacist(1, names, "Kowalska", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2019, 12, 1));
-        Pharmacist pharmacist2 = new Pharmacist(2, names, "Nowak", LocalDate.of(2000, 11, 16), 30.00, LocalDate.of(2019, 12, 1));
-        Pharmacist pharmacist3 = new Pharmacist(3, names, "Polak", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2019, 12, 1));
+        Pharmacist pharmacist2 = new Pharmacist(2, new ArrayList<>(Arrays.asList("Alex", "Charles")), "Nowak", LocalDate.of(2000, 11, 16), 30.00, LocalDate.of(2019, 12, 1));
+        Pharmacist pharmacist3 = new Pharmacist(3, new ArrayList<>(Arrays.asList("Wiktoria")),"Polak", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2019, 12, 1));
         Pharmacist pharmacist4 = new Pharmacist();
         pharmacist4.setNames("Julia", "Karolina");
         pharmacist4.setSurName("Zawada");
@@ -76,14 +77,18 @@ public class Main {
         //asocjacja z atrybutem
 
         System.out.println("Asocjacja z atrybutem CommunityPharmacyEmployee-Order-Drug");
-        Order order1 = pharmacist1.orderDrugs(1, drugList, "Adamed", LocalDate.of(2000, 11, 16), 100, 678987221);
+        Order order1 = pharmacist1.orderDrugs(1, drugList, "Adamed", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
+        Order order2 = pharmacist2.orderDrugs(2, drugList, "Hasco", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
         System.out.println(order1);
+        System.out.println(order2);
 
         //kompozycja
 
         System.out.println("Kompozycja Order-Dokument");
-        order1.createDocument(1, Order.Document.DocumentType.INVOICE);
-        order1.createDocument(2, Order.Document.DocumentType.INVOICE);
+        order1.createDocument(1, Order.DocumentType.INVOICE);
+        order1.createDocument(2, Order.DocumentType.PAYMENTCONFIRMATION);
+        order2.createDocument(1, Order.DocumentType.INVOICE);
         System.out.println(order1);
+        System.out.println(order2);
     }
 }
