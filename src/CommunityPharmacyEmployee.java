@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class CommunityPharmacyEmployee extends AssociationClass implements Serializable{
+//klasa abstrakcyjna
+public abstract class CommunityPharmacyEmployee implements Serializable{
     //atrybuty obiektowe
     private int id;
     private List<String> names; //atrybut powtarzalny

@@ -1,12 +1,27 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
+
+//Overlapping
+enum DrugType {
+    DRUG("Drug"), OTC("OTC"), SUPPLEMENT("Supplement"), POM("Prescribed only medicine"), ANTIPSYCHOTIC("Antipsychotic"), MEDICALDEVICE("Medical device");
+    public String label;
+    private DrugType(String label){
+        this.label = label;
+    }
+    public String getLabel(){
+        return label;
+    }
+}
 
 public class Drug {
     private String drugName;
     private int indexNumber;
     private double weight;
     private double price;
+
+    private EnumSet<DrugType> drug =  EnumSet.of(DrugType.DRUG);
 
     private List<Magazine> magazines = new ArrayList<>();
     private List<Order> orders = new ArrayList<>();

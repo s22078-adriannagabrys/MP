@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+//polimorfizm
 public class Pharmacist extends CommunityPharmacyEmployee implements Serializable{
 
     private double degreeBonus = 5.00;
