@@ -3,9 +3,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 //klasa abstrakcyjna
 public abstract class CommunityPharmacyEmployee implements Serializable{
@@ -65,9 +63,8 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
     public int getId() {
         return id;
     }
-    public int[] magazineIds;
     private List<Order> orders = new ArrayList<>();
-    private List<Drug> drugs = new ArrayList<>();
+//    private List<Drug> drugs = new ArrayList<>();
     private List<Pharmacy> pharmacies = new ArrayList<>();
 
     //asocjacja z atrybutem pracownik-zamówienie
@@ -84,6 +81,10 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
         }
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
     //asocjacja kwalifikowana pracownik-apteka
     public void addPharmacy(Pharmacy newPharmacy) {
         if(!pharmacies.contains(newPharmacy)) {
@@ -96,6 +97,10 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
             pharmacies.remove(toRemove);
             toRemove.removeEmployee(this);
         }
+    }
+
+    public List<Pharmacy> getPharmacies() {
+        return pharmacies;
     }
 
     public String getSurName() {
@@ -129,4 +134,11 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
         return newOrder;
     }
 
+    public List<Drug> getDrugs() {
+        Set<Drug> drugSet = new HashSet<>();
+        for (Order order : orders){
+            drugSet.addAll(order.getDrugs());
+        }
+        return new ArrayList<>(drugSet);
+    }
 }

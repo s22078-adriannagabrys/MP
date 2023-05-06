@@ -56,9 +56,10 @@ public class Main {
         System.out.println("Asocjacja zwykła Magazine-Drug");
         magazine1.addDrug(drug1);
         magazine1.addDrug(drug2);
-        magazine1.addDrug(drug3);
-        magazine1.addDrug(drug4);
+        drug3.addMagazine(magazine1);
+        drug4.addMagazine(magazine1);
         System.out.println(magazine1);
+        System.out.println(drug1);
 
         magazine1.removeDrug(drug1);
         System.out.println(magazine1);
@@ -68,7 +69,7 @@ public class Main {
         System.out.println("Asocjacja kwalifikowana CommunityPharmacyEmployee-Pharmacy (kwalifikator id)");
         pharmacy1.addEmployeeQualif(pharmacist1);
         pharmacy1.addEmployeeQualif(pharmacist2);
-        pharmacy1.addEmployeeQualif(pharmacist3);
+        pharmacist3.addPharmacy(pharmacy1);
         System.out.println(pharmacy1);
 
         pharmacy1.removeEmployee(pharmacist1);
@@ -80,6 +81,8 @@ public class Main {
         Order order1 = pharmacist1.orderDrugs(1, drugList, "Adamed", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
         Order order2 = pharmacist2.orderDrugs(2, drugList, "Hasco", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
         System.out.println(order1);
+        System.out.println(pharmacist1.getDrugs());
+        System.out.println(drug1.getEmployees());
         System.out.println(order2);
 
         //kompozycja
@@ -90,5 +93,6 @@ public class Main {
         order2.createDocument(1, Order.DocumentType.INVOICE);
         System.out.println(order1);
         System.out.println(order2);
+        System.out.println(order1.getDocuments());
     }
 }

@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.*;
 
 //Overlapping
 enum DrugType {
@@ -47,6 +44,10 @@ public class Drug {
         }
     }
 
+    public List<Magazine> getMagazines() {
+        return magazines;
+    }
+
     //asocjacja z atrybutem
     public void addOrder(Order newOrder) {
         if(!orders.contains(newOrder)) {
@@ -68,6 +69,14 @@ public class Drug {
 
     public int getIndexNumber() {
         return indexNumber;
+    }
+
+    public List<CommunityPharmacyEmployee> getEmployees() {
+        Set<CommunityPharmacyEmployee> employeeSet = new HashSet<>();
+        for (Order order : orders){
+            employeeSet.addAll(order.getCommunityPharmacyEmployees());
+        }
+        return new ArrayList<>(employeeSet);
     }
 
     @Override

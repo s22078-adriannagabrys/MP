@@ -36,6 +36,10 @@ public class Order {
             toRemove.removeOrder(this);
         }
     }
+    public List<Drug> getDrugs() {
+        return drugs;
+    }
+
     public void addEmployee(CommunityPharmacyEmployee newEmployee) {
         if(!communityPharmacyEmployees.contains(newEmployee)) {
             communityPharmacyEmployees.add(newEmployee);
@@ -49,6 +53,10 @@ public class Order {
         }
     }
 
+    public List<CommunityPharmacyEmployee> getCommunityPharmacyEmployees() {
+        return communityPharmacyEmployees;
+    }
+
     public void createDocument(int id, DocumentType documentType){
         this.addDocument(new Document(id, documentType));
     }
@@ -57,6 +65,9 @@ public class Order {
             documents.add(newDocument);
         }
     }
+    public List<Document> getDocuments(){
+        return documents;
+    }
 
     @Override
     public String toString() {
@@ -64,7 +75,7 @@ public class Order {
         var documentsInfo = " ";
 
         for(CommunityPharmacyEmployee communityPharmacyEmployee : communityPharmacyEmployees) {
-            info += "   Order by: " + communityPharmacyEmployee.getId() + "\n";
+            info += "   Order by: " + communityPharmacyEmployee + "\n";
         }
 
         for(Drug drug : drugs) {
