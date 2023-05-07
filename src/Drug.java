@@ -19,7 +19,6 @@ public class Drug {
     private double price;
 
     private EnumSet<DrugType> drug =  EnumSet.of(DrugType.DRUG);
-
     private List<Magazine> magazines = new ArrayList<>();
     private List<Order> orders = new ArrayList<>();
 
@@ -89,4 +88,7 @@ public class Drug {
 
         return info;
     }
+
+    //kategoria po ilości - wieloaspektowe
+
 }
