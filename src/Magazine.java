@@ -24,6 +24,10 @@ public class Magazine {
         }
     }
 
+    public List<Drug> getDrugs(){
+        return drugs;
+    }
+
     public int getIndex() {
         return index;
     }

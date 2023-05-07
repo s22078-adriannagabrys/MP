@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="40b54b77-66ef-4e6f-bbd9-07119094e69d" name="Changes" comment="Lubie placki2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CommunityPharmacyEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommunityPharmacyEmployee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Drug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Drug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Magazine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Magazine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +56,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -177,65 +181,12 @@
     <MESSAGE value="MP3" />
     <option name="LAST_COMMIT_MESSAGE" value="MP3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="533" y="168" key="#com.intellij.ide.util.MemberChooser" timestamp="1683365136129">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state x="533" y="160" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1682424961052" />
-    <state x="533" y="168" key="#com.intellij.ide.util.MemberChooser/0.25.1440.807@0.25.1440.807" timestamp="1683365136129" />
-    <state width="1398" height="278" key="GridCell.Tab.0.bottom" timestamp="1683370155361">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1682423846790" />
-    <state width="1398" height="278" key="GridCell.Tab.0.bottom/0.25.1440.807@0.25.1440.807" timestamp="1683370155361" />
-    <state width="1398" height="278" key="GridCell.Tab.0.center" timestamp="1683370155360">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1682423846789" />
-    <state width="1398" height="278" key="GridCell.Tab.0.center/0.25.1440.807@0.25.1440.807" timestamp="1683370155360" />
-    <state width="1398" height="278" key="GridCell.Tab.0.left" timestamp="1683370155359">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1682423846788" />
-    <state width="1398" height="278" key="GridCell.Tab.0.left/0.25.1440.807@0.25.1440.807" timestamp="1683370155359" />
-    <state width="1398" height="278" key="GridCell.Tab.0.right" timestamp="1683370155360">
-      <screen x="0" y="25" width="1440" height="807" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1682423846790" />
-    <state width="1398" height="278" key="GridCell.Tab.0.right/0.25.1440.807@0.25.1440.807" timestamp="1683370155360" />
-    <state width="1398" height="304" key="GridCell.Tab.1.bottom" timestamp="1682423846794">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1682423846794" />
-    <state width="1398" height="304" key="GridCell.Tab.1.center" timestamp="1682423846792">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1682423846792" />
-    <state width="1398" height="304" key="GridCell.Tab.1.left" timestamp="1682423846791">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1682423846791" />
-    <state width="1398" height="304" key="GridCell.Tab.1.right" timestamp="1682423846793">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="304" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1682423846793" />
-    <state x="208" y="28" key="SettingsEditor" timestamp="1682421568376">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="208" y="28" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1682421568376" />
-    <state x="320" y="193" key="Vcs.Push.Dialog.v2" timestamp="1682432702108">
-      <screen x="0" y="25" width="1440" height="809" />
-    </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1682427766542" />
-    <state x="320" y="193" key="Vcs.Push.Dialog.v2/0.25.1440.809@0.25.1440.809" timestamp="1682432702108" />
-    <state x="320" y="194" key="Vcs.Push.Dialog.v2/0.25.1440.814@0.25.1440.814" timestamp="1682427818009" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Order.java</url>
-          <line>76</line>
+          <line>68</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -77,12 +77,25 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
     public void removeOrder(Order toRemove) {
         if(orders.contains(toRemove)) {
             orders.remove(toRemove);
-            toRemove.removeEmployee(this);
+            toRemove.removeEmployee();
         }
     }
-
     public List<Order> getOrders() {
         return orders;
+    }
+    public Order orderDrug(int id, Drug newDrug, String warehouse, LocalDate date, LocalDate paymentDate, double price, int NIP){
+        Order newOrder = new Order(id, warehouse, date, paymentDate, price, NIP);
+        newOrder.addDrug(newDrug);
+        newDrug.addOrder(newOrder);
+        newOrder.addEmployee(this);
+        return newOrder;
+    }
+    public Drug getDrug() {
+        Drug newDrug = null;
+        for (Order order : orders){
+            newDrug = order.getDrug();
+        }
+        return newDrug;
     }
 
     //asocjacja kwalifikowana pracownik-apteka
@@ -102,6 +115,8 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
     public List<Pharmacy> getPharmacies() {
         return pharmacies;
     }
+
+
 
     public String getSurName() {
         return surName;
@@ -125,20 +140,5 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
         return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : String.valueOf(getDateOfTerminationOfEmployment()));
     }
 
-    public Order orderDrugs(int id, List<Drug> drugList, String warehouse, LocalDate date, LocalDate paymentDate, double price, int NIP){
-        Order newOrder = new Order(id, warehouse, date, paymentDate, price, NIP);
-        for(Drug newDrug : drugList){
-            newOrder.addDrug(newDrug);
-            newOrder.addEmployee(this);
-        }
-        return newOrder;
-    }
 
-    public List<Drug> getDrugs() {
-        Set<Drug> drugSet = new HashSet<>();
-        for (Order order : orders){
-            drugSet.addAll(order.getDrugs());
-        }
-        return new ArrayList<>(drugSet);
-    }
 }

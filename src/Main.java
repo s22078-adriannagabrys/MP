@@ -59,7 +59,7 @@ public class Main {
         drug3.addMagazine(magazine1);
         drug4.addMagazine(magazine1);
         System.out.println(magazine1);
-        System.out.println(drug1);
+        System.out.println("Magazine drug list: " + magazine1.getDrugs());
 
         magazine1.removeDrug(drug1);
         System.out.println(magazine1);
@@ -71,6 +71,7 @@ public class Main {
         pharmacy1.addEmployeeQualif(pharmacist2);
         pharmacist3.addPharmacy(pharmacy1);
         System.out.println(pharmacy1);
+        System.out.println("Pharmacist 1 in phramacy: " + pharmacy1.findEmployeeQualif(1));
 
         pharmacy1.removeEmployee(pharmacist1);
         System.out.println(pharmacy1);
@@ -78,11 +79,12 @@ public class Main {
         //asocjacja z atrybutem
 
         System.out.println("Asocjacja z atrybutem CommunityPharmacyEmployee-Order-Drug");
-        Order order1 = pharmacist1.orderDrugs(1, drugList, "Adamed", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
-        Order order2 = pharmacist2.orderDrugs(2, drugList, "Hasco", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
+        Order order1 = pharmacist1.orderDrug(1, drug1, "Adamed", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
+        Order order2 = pharmacist2.orderDrug(2, drug2, "Hasco", LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 16), 100, 678987221);
         System.out.println(order1);
-        System.out.println(pharmacist1.getDrugs());
-        System.out.println(drug1.getEmployees());
+        System.out.println(pharmacist1.getDrug());
+        System.out.println(drug1.getEmployee());
+        System.out.println();
         System.out.println(order2);
 
         //kompozycja

@@ -17,8 +17,6 @@ public class Drug {
     private int indexNumber;
     private double weight;
     private double price;
-
-    private EnumSet<DrugType> drug =  EnumSet.of(DrugType.DRUG);
     private List<Magazine> magazines = new ArrayList<>();
     private List<Order> orders = new ArrayList<>();
 
@@ -47,6 +45,10 @@ public class Drug {
         return magazines;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
     //asocjacja z atrybutem
     public void addOrder(Order newOrder) {
         if(!orders.contains(newOrder)) {
@@ -58,10 +60,16 @@ public class Drug {
     public void removeOrder(Order toRemove) {
         if(orders.contains(toRemove)) {
             orders.remove(toRemove);
-            toRemove.removeDrug(this);
+            toRemove.removeDrug();
         }
     }
-
+    public CommunityPharmacyEmployee getEmployee() {
+        CommunityPharmacyEmployee newEmployee = null;
+        for (Order order : orders){
+            newEmployee = order.getCommunityPharmacyEmployee();
+        }
+        return newEmployee;
+    }
     public String getDrugName() {
         return drugName;
     }
@@ -70,21 +78,14 @@ public class Drug {
         return indexNumber;
     }
 
-    public List<CommunityPharmacyEmployee> getEmployees() {
-        Set<CommunityPharmacyEmployee> employeeSet = new HashSet<>();
-        for (Order order : orders){
-            employeeSet.addAll(order.getCommunityPharmacyEmployees());
-        }
-        return new ArrayList<>(employeeSet);
-    }
 
     @Override
     public String toString() {
-        var info = "Drug: " + drugName + "\n";
+        var info = "Drug: " + drugName ;
 
-        for(Magazine magazine : magazines) {
-            info += "   " +  magazine.getIndex() + "\n";
-        }
+//        for(Magazine magazine : magazines) {
+//            info += "  Magazine: " +  magazine.getIndex() + "\n";
+//        }
 
         return info;
     }

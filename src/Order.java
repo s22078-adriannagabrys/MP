@@ -10,8 +10,8 @@ public class Order {
     private LocalDate dateOfPayment;
     private double price;
     private int NIP;
-    private List<Drug> drugs = new ArrayList<>();
-    private List<CommunityPharmacyEmployee> communityPharmacyEmployees = new ArrayList<>();
+    private Drug drug;
+    private CommunityPharmacyEmployee communityPharmacyEmployee;
     private List<Document> documents = new ArrayList<>();
 
     public Order(int id, String warehouse, LocalDate dateOfOrder, LocalDate dateOfPayment, double price, int NIP) {
@@ -25,36 +25,28 @@ public class Order {
 
     //asocjacja z atrybutem (Order jest klasą asocjacyjną)
     public void addDrug(Drug newDrug) {
-        if(!drugs.contains(newDrug)) {
-            drugs.add(newDrug);
-            newDrug.addOrder(this);
-        }
+        drug = newDrug;
+        drug.addOrder(this);
     }
-    public void removeDrug(Drug toRemove) {
-        if(drugs.contains(toRemove)) {
-            drugs.remove(toRemove);
-            toRemove.removeOrder(this);
-        }
+    public void removeDrug() {
+        drug = null;
+        drug.removeOrder(this);
     }
-    public List<Drug> getDrugs() {
-        return drugs;
+    public Drug getDrug() {
+        return drug;
     }
 
     public void addEmployee(CommunityPharmacyEmployee newEmployee) {
-        if(!communityPharmacyEmployees.contains(newEmployee)) {
-            communityPharmacyEmployees.add(newEmployee);
-            newEmployee.addOrder(this);
-        }
-    }
-    public void removeEmployee(CommunityPharmacyEmployee toRemove) {
-        if(communityPharmacyEmployees.contains(toRemove)) {
-            communityPharmacyEmployees.remove(toRemove);
-            toRemove.removeOrder(this);
-        }
-    }
+        communityPharmacyEmployee = newEmployee;
+        communityPharmacyEmployee.addOrder(this);
 
-    public List<CommunityPharmacyEmployee> getCommunityPharmacyEmployees() {
-        return communityPharmacyEmployees;
+    }
+    public void removeEmployee() {
+        communityPharmacyEmployee = null;
+        communityPharmacyEmployee.removeOrder(this);
+    }
+    public CommunityPharmacyEmployee getCommunityPharmacyEmployee() {
+        return communityPharmacyEmployee;
     }
 
     public void createDocument(int id, DocumentType documentType){
@@ -74,13 +66,8 @@ public class Order {
         var info = "Order: " + id + "\n";
         var documentsInfo = " ";
 
-        for(CommunityPharmacyEmployee communityPharmacyEmployee : communityPharmacyEmployees) {
-            info += "   Order by: " + communityPharmacyEmployee + "\n";
-        }
-
-        for(Drug drug : drugs) {
-            info += "   Drug: " + drug.getIndexNumber() + " - " +  drug.getDrugName() + "\n";
-        }
+        info += "   Order by: " + communityPharmacyEmployee + "\n";
+        info += "   Drug: " + drug.getIndexNumber() + " - " +  drug.getDrugName() + "\n";
 
         for(Document document : documents) {
             documentsInfo += "   Document: " + document.id + " - " +  document + "\n";
@@ -117,7 +104,7 @@ public class Order {
             String info = "Document " + id + " ";
             switch (documentType){
                 case INVOICE:
-                    return info += documentType.getLabel() + " Ordered by:" + communityPharmacyEmployees.toString() + " Sender: " + warehouse + " Date of order: " + dateOfOrder + " Price: " + price;
+                    return info += documentType.getLabel() + " Ordered by:" + communityPharmacyEmployee.toString() + " Sender: " + warehouse + " Date of order: " + dateOfOrder + " Price: " + price;
                 case PAYMENTCONFIRMATION:
                     return info += documentType.getLabel() + " Date of payment: " + dateOfPayment + " Price: " + price;
                 default:
