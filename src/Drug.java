@@ -89,6 +89,20 @@ public class Drug {
         return info;
     }
 
-    //kategoria po ilości - wieloaspektowe
+    //wieloaspektowość
+
+    public class WayOfSelling{
+
+    }
+
+    public class SellByPiece extends WayOfSelling {
+    }
+
+    public class SellInBlister extends WayOfSelling {
+    }
+
+    public class SellInPackage extends WayOfSelling {
+    }
+
 
 }
