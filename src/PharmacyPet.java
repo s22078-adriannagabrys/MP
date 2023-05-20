@@ -26,16 +26,16 @@ public class PharmacyPet extends CommunityPharmacyEmployee implements IDog{
 
     @Override
     public void bark() {
-
+        System.out.println("Hau!");
     }
 
     @Override
     public void givePaw() {
-
+        System.out.println("Gives paw");
     }
 
     @Override
     public double calculateSalary() {
-        return 0;
+        return getSalaryPerHour() + 5;
     }
 }

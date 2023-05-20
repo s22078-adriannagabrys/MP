@@ -1,32 +1,26 @@
-import java.util.*;
-
-//Overlapping
-enum DrugType {
-    DRUG("Drug"), OTC("OTC"), SUPPLEMENT("Supplement"), POM("Prescribed only medicine"), ANTIPSYCHOTIC("Antipsychotic"), MEDICALDEVICE("Medical device");
-    public String label;
-    private DrugType(String label){
-        this.label = label;
-    }
-    public String getLabel(){
-        return label;
-    }
-}
+//wieloaspektowe/ polimorfizm
 
 public abstract class Drug {
-    private String drugName;
-    private int indexNumber;
-    private double weight;
-    private double price;
+    protected String drugName;
+    protected int indexNumber;
+    protected double weight;
 
-    private EnumSet<DrugType> drug =  EnumSet.of(DrugType.DRUG);
-
-    public Drug(String drugName, int indexNumber, double weight, double price) {
+    private Drug(String drugName, int indexNumber, double weight) {
         this.drugName = drugName;
         this.indexNumber = indexNumber;
         this.weight = weight;
-        this.price = price;
+    }
+    SellByVolume sellByVolume;
+    SellByPiece sellByPiece;
+    public Drug(String drugName, int indexNumber, double weight, double priceBy1ml, double volume){
+        this(drugName, indexNumber, weight);
+        sellByVolume = new SellByVolume(priceBy1ml,volume);
     }
 
+    public Drug(String drugName, int indexNumber, double weight, double priceByPiece, int numberOfPieces){
+        this(drugName, indexNumber, weight);
+        sellByPiece = new SellByPiece(priceByPiece, numberOfPieces);
+    }
     public String getDrugName() {
         return drugName;
     }
@@ -35,27 +29,61 @@ public abstract class Drug {
         return indexNumber;
     }
 
+    public abstract String getData();
+
     @Override
     public String toString() {
-        var info = "Drug: " + drugName + "\n";
+        String info = "Drug: " + drugName + "\n";
 
         return info;
     }
 
+    public double getVolume() throws Exception{
+        try {
+            return sellByVolume.getVolume();
+        } catch (Exception ex){
+            throw new Exception("Is not sell by volume");
+        }
+    }
+
+    public int getNumberOfPieces() throws Exception{
+        try{
+            return sellByPiece.getNumberOfPieces();
+        } catch (Exception ex){
+            throw new Exception("Is not sell by piece");
+        }
+    }
+
     //wieloaspektowość
 
-    public class WayOfSelling{
+    public class SellByVolume{
+        double priceBy1ml;
+        double volume;
 
+        public SellByVolume(double priceBy1ml, double volume) {
+            this.priceBy1ml = priceBy1ml;
+            this.volume = volume;
+        }
+
+        public double getVolume() {
+            return volume;
+        }
     }
 
-    public class SellByPiece extends WayOfSelling {
+    public class SellByPiece{
+        double priceByPiece;
+        int numberOfPieces;
+
+        public SellByPiece(double priceByPiece, int amountLeft) {
+            this.priceByPiece = priceByPiece;
+            this.numberOfPieces = amountLeft;
+        }
+
+        public int getNumberOfPieces() {
+            return numberOfPieces;
+        }
     }
 
-    public class SellInBlister extends WayOfSelling {
-    }
-
-    public class SellInPackage extends WayOfSelling {
-    }
 
 
 }

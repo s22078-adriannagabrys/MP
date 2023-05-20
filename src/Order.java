@@ -36,8 +36,8 @@ public class Order {
 
     @Override
     public String toString() {
-        var info = "Order: " + id + "\n";
-        var documentsInfo = " ";
+        String info = "Order: " + id + "\n";
+        String documentsInfo = " ";
 
         for(CommunityPharmacyEmployee communityPharmacyEmployee : communityPharmacyEmployees) {
             info += "   Order by: " + communityPharmacyEmployee + "\n";

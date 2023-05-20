@@ -13,27 +13,119 @@ public class Main {
         names.add("Ewa");
         File file = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
 
-        Pharmacist pharmacist1 = new Pharmacist(1, names, "Kowalska", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2019, 12, 1));
-        Pharmacist pharmacist2 = new Pharmacist(2, new ArrayList<>(Arrays.asList("Alex", "Charles")), "Nowak", LocalDate.of(2000, 11, 16), 30.00, LocalDate.of(2019, 12, 1));
-        Pharmacist pharmacist3 = new Pharmacist(3, new ArrayList<>(Arrays.asList("Wiktoria")),"Polak", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2019, 12, 1));
-        Pharmacist pharmacist4 = new Pharmacist();
-        pharmacist4.setNames("Julia", "Karolina");
-        pharmacist4.setSurName("Zawada");
 
-//        Drug drug1 = new Drug("Aspirin", 12345, 5, 16.00);
-//        Drug drug2 = new Drug("Ibuprofen", 30001, 5, 16.00);
-//        Drug drug3 = new Drug("Paracetamol", 56723, 5, 16.00);
-//        Drug drug4 = new Drug("Amoxicilin", 15243, 5, 16.00);
+
+        //Abstract
+        System.out.println("Abstract / polimorfizm --------------");
+        Drug pom = new PrescribedOnlyMedicine("Aspirin", 12345, 5, 1, 15.50, 1234, "Don't drive");
+        Drug supplement = new Supplement("Apetizer", 96766, 5, 16.00, 3, "Don't drive");
+        System.out.println(pom.getData());
+        System.out.println(supplement.getData());
+
+        //Wielodziedziczenie
+        System.out.println("Wielodziedziczenie --------------");
+        PharmacyPet pharmacyPet = new PharmacyPet(1, Arrays.asList("Alex"), "Kot", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2000, 11, 16), "Husky", "Blue", "Adam");
+        pharmacyPet.givePaw();
+        System.out.println(pharmacyPet.isStillWorking());
+
+        //Dynamic
+        System.out.println("Dynamic------------------");
+        CommunityPharmacyEmployee employee = new CommunityPharmacyEmployee(1, Arrays.asList("Alex"), "Kot", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2000, 11, 16));
+        employee.changeClassToManager("Master", true, 15);
+        try {
+            System.out.println(employee.getDiplomaIndex());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println(employee.has5YearsOfExperience());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        employee.changeClassToPharmacist("Master", 10, 1234);
+        try {
+            System.out.println(employee.getDiplomaIndex());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println(employee.has5YearsOfExperience());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        //Wieloaspektowe
+        System.out.println("Wieloaspektowe--------------------");
+        PrescribedOnlyMedicine drug1 = new PrescribedOnlyMedicine("Aspirin", 12345, 5, 1, 15.50, 1234, "Don't drive");
+        PrescribedOnlyMedicine drug2 = new PrescribedOnlyMedicine("Ibuprofen", 154365, 5, 1, 2, 1234, "Don't drive");
+        PrescribedOnlyMedicine drug3 = new PrescribedOnlyMedicine("Amoxicilin", 6587, 5, 1, 3, 1234, "Don't drive");
+        Supplement drug4 = new Supplement("Apetizer", 96766, 5, 16.00, 3, "Don't drive");
+        Supplement drug5 = new Supplement("Marsjanki", 4575, 5, 16.00, 3, "Don't drive");
+
+        System.out.println(drug1.getLicenceNumber());
+        try {
+            System.out.println(drug1.getVolume());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println(drug1.getNumberOfPieces());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(drug4.getLeaflet());
+        try {
+            System.out.println(drug4.getVolume());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println(drug4.getNumberOfPieces());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
 
         List<Drug> drugList = new ArrayList();
-//        drugList.add(drug1);
-//        drugList.add(drug2);
-//        drugList.add(drug3);
-//        drugList.add(drug4);
+        drugList.add(drug1);
+        drugList.add(drug2);
+        drugList.add(drug3);
+        drugList.add(drug4);
+        drugList.add(drug5);
 
-        Magazine magazine1 = new Magazine(1);
+        List<String> labTools = new ArrayList();
+        labTools.add("Spoon");
+        labTools.add("Once");
+        labTools.add("Beaker");
 
+        //Overlapping
 
+        System.out.println("Overlapping ------------------");
+        Room room1 = new Room(1, 1, drugList);
+        Room room2 = new Room(labTools, 2, 2);
+        Room room3 = new Room(3, 3, drugList, labTools);
 
+        try {
+            System.out.println(room1.getDrugs());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println(room1.getLabTools());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println(room3.getDrugs());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println(room3.getLabTools());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
