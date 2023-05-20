@@ -18,6 +18,7 @@ public class Pharmacist extends CommunityPharmacyEmployee implements Serializabl
     public Pharmacist() {
         super();
     }
+
     //przesłonięcie metody
     @Override
     public double calculateSalary() {

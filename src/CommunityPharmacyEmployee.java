@@ -67,19 +67,6 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
 //    private List<Drug> drugs = new ArrayList<>();
     private List<Pharmacy> pharmacies = new ArrayList<>();
 
-    //asocjacja z atrybutem pracownik-zamówienie
-    public void addOrder(Order newOrder) {
-        if(!orders.contains(newOrder)) {
-            orders.add(newOrder);
-            newOrder.addEmployee(this);
-        }
-    }
-    public void removeOrder(Order toRemove) {
-        if(orders.contains(toRemove)) {
-            orders.remove(toRemove);
-            toRemove.removeEmployee(this);
-        }
-    }
 
     public List<Order> getOrders() {
         return orders;
@@ -125,20 +112,4 @@ public abstract class CommunityPharmacyEmployee implements Serializable{
         return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : String.valueOf(getDateOfTerminationOfEmployment()));
     }
 
-    public Order orderDrugs(int id, List<Drug> drugList, String warehouse, LocalDate date, LocalDate paymentDate, double price, int NIP){
-        Order newOrder = new Order(id, warehouse, date, paymentDate, price, NIP);
-        for(Drug newDrug : drugList){
-            newOrder.addDrug(newDrug);
-            newOrder.addEmployee(this);
-        }
-        return newOrder;
-    }
-
-    public List<Drug> getDrugs() {
-        Set<Drug> drugSet = new HashSet<>();
-        for (Order order : orders){
-            drugSet.addAll(order.getDrugs());
-        }
-        return new ArrayList<>(drugSet);
-    }
 }

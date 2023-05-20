@@ -20,16 +20,16 @@ public class Main {
         pharmacist4.setNames("Julia", "Karolina");
         pharmacist4.setSurName("Zawada");
 
-        Drug drug1 = new Drug("Aspirin", 12345, 5, 16.00);
-        Drug drug2 = new Drug("Ibuprofen", 30001, 5, 16.00);
-        Drug drug3 = new Drug("Paracetamol", 56723, 5, 16.00);
-        Drug drug4 = new Drug("Amoxicilin", 15243, 5, 16.00);
+//        Drug drug1 = new Drug("Aspirin", 12345, 5, 16.00);
+//        Drug drug2 = new Drug("Ibuprofen", 30001, 5, 16.00);
+//        Drug drug3 = new Drug("Paracetamol", 56723, 5, 16.00);
+//        Drug drug4 = new Drug("Amoxicilin", 15243, 5, 16.00);
 
         List<Drug> drugList = new ArrayList();
-        drugList.add(drug1);
-        drugList.add(drug2);
-        drugList.add(drug3);
-        drugList.add(drug4);
+//        drugList.add(drug1);
+//        drugList.add(drug2);
+//        drugList.add(drug3);
+//        drugList.add(drug4);
 
         Magazine magazine1 = new Magazine(1);
 

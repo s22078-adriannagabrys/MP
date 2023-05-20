@@ -14,10 +14,6 @@ public class PharmacyManager extends CommunityPharmacyEmployee implements Serial
         super(id, names, surName, birthDate, salaryPerHour, dateOfEmployment);
     }
 
-    public PharmacyManager(CommunityPharmacyEmployee prevPerson, boolean has5YearsOfExperience, double salaryPerHour){
-        super(id, names, surName, birthDate, dateOfEmployment)
-    }
-
     @Override
     public double calculateSalary() {
         return getSalaryPerHour() * degreeBonus + extraAmountOfDrugsSoldPerMonth;

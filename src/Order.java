@@ -22,41 +22,6 @@ public class Order {
         this.price = price;
         this.NIP = NIP;
     }
-
-    //asocjacja z atrybutem (Order jest klasą asocjacyjną)
-    public void addDrug(Drug newDrug) {
-        if(!drugs.contains(newDrug)) {
-            drugs.add(newDrug);
-            newDrug.addOrder(this);
-        }
-    }
-    public void removeDrug(Drug toRemove) {
-        if(drugs.contains(toRemove)) {
-            drugs.remove(toRemove);
-            toRemove.removeOrder(this);
-        }
-    }
-    public List<Drug> getDrugs() {
-        return drugs;
-    }
-
-    public void addEmployee(CommunityPharmacyEmployee newEmployee) {
-        if(!communityPharmacyEmployees.contains(newEmployee)) {
-            communityPharmacyEmployees.add(newEmployee);
-            newEmployee.addOrder(this);
-        }
-    }
-    public void removeEmployee(CommunityPharmacyEmployee toRemove) {
-        if(communityPharmacyEmployees.contains(toRemove)) {
-            communityPharmacyEmployees.remove(toRemove);
-            toRemove.removeOrder(this);
-        }
-    }
-
-    public List<CommunityPharmacyEmployee> getCommunityPharmacyEmployees() {
-        return communityPharmacyEmployees;
-    }
-
     public void createDocument(int id, DocumentType documentType){
         this.addDocument(new Document(id, documentType));
     }

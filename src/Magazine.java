@@ -9,20 +9,6 @@ public class Magazine {
         this.index = index;
     }
 
-    //asocjacja zwykła
-    public void addDrug(Drug newDrug) {
-        if(!drugs.contains(newDrug)) {
-            drugs.add(newDrug);
-            newDrug.addMagazine(this);
-        }
-    }
-
-    public void removeDrug(Drug toRemove) {
-        if(drugs.contains(toRemove)) {
-            drugs.remove(toRemove);
-            toRemove.removeMagazine(this);
-        }
-    }
 
     public int getIndex() {
         return index;
