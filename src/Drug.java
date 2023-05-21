@@ -38,20 +38,16 @@ public abstract class Drug {
         return info;
     }
 
-    public double getVolume() throws Exception{
-        try {
-            return sellByVolume.getVolume();
-        } catch (Exception ex){
-            throw new Exception("Is not sell by volume");
-        }
+    public SellByVolume getSellByVolume() throws Exception{
+        if(sellByVolume != null){
+            return sellByVolume;
+        } else throw new Exception("Is not sell by volume");
     }
 
-    public int getNumberOfPieces() throws Exception{
-        try{
-            return sellByPiece.getNumberOfPieces();
-        } catch (Exception ex){
-            throw new Exception("Is not sell by piece");
-        }
+    public SellByPiece getSellByPiece() throws Exception{
+        if(sellByPiece != null){
+            return sellByPiece;
+        } else throw new Exception("Is not sell by piece");
     }
 
     //wieloaspektowość

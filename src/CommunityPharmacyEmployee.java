@@ -25,8 +25,6 @@ public class CommunityPharmacyEmployee implements Serializable{
         this.dateOfEmployment = dateOfEmployment;
     }
 
-    //metoda abstracyjna
-
     public double calculateSalary(){
         return salaryPerHour;
     }
@@ -36,11 +34,20 @@ public class CommunityPharmacyEmployee implements Serializable{
     public double getSalaryPerHour() {
         return salaryPerHour;
     }
+
+    public void setDateOfTerminationOfEmployment(LocalDate dateOfTerminationOfEmployment) {
+        this.dateOfTerminationOfEmployment = dateOfTerminationOfEmployment;
+    }
+
     public LocalDate getDateOfTerminationOfEmployment() {
         return dateOfTerminationOfEmployment;
     }
     public String isStillWorking(){
-        return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : String.valueOf(getDateOfTerminationOfEmployment()));
+        return getNames() + " " + getSurName() + " " + (getDateOfTerminationOfEmployment() == null ? "still working" : "fired in: " + String.valueOf(getDateOfTerminationOfEmployment()));
+    }
+
+    public LocalDate getDateOfEmployment() {
+        return dateOfEmployment;
     }
 
     public int getId() {
@@ -63,7 +70,6 @@ public class CommunityPharmacyEmployee implements Serializable{
     //    private List<Drug> drugs = new ArrayList<>();
     private List<Pharmacy> pharmacies = new ArrayList<>();
 
-
     public List<Order> getOrders() {
         return orders;
     }
@@ -81,7 +87,6 @@ public class CommunityPharmacyEmployee implements Serializable{
             toRemove.removeEmployee(this);
         }
     }
-
     public List<Pharmacy> getPharmacies() {
         return pharmacies;
     }
@@ -134,7 +139,7 @@ public class CommunityPharmacyEmployee implements Serializable{
     public void removeTechnician(){
         technician = null;
     }
-    public void changeClassToManager(String title, boolean has5YearsOfExperience,int extraAmountOfDrugsSoldPerMonth){
+    public void changeClassToManager(String title, boolean has5YearsOfExperience, int extraAmountOfDrugsSoldPerMonth){
         manager = new PharmacyManager(title, has5YearsOfExperience, extraAmountOfDrugsSoldPerMonth);
         removePharmacist();
     }
@@ -143,20 +148,16 @@ public class CommunityPharmacyEmployee implements Serializable{
         removeManager();
     }
 
-    public boolean has5YearsOfExperience() throws Exception{
-        try {
-            return manager.isHas5YearsOfExperience();
-        } catch (Exception ex){
-            throw new Exception("Is not an Manager");
-        }
+    public PharmacyManager getManager() throws Exception{
+        if(manager != null){
+            return manager;
+        } else throw new Exception("Is not Manager");
     }
 
-    public int getDiplomaIndex() throws Exception{
-        try{
-            return pharmacists.getDiplomaIndex();
-        } catch (Exception ex){
-            throw new Exception("Is not a Pharmacist");
-        }
+    public Pharmacist getPharmacists() throws Exception{
+        if(pharmacists != null){
+            return pharmacists;
+        } else throw new Exception("Is not Pharmacist");
     }
     public class Pharmacist{
         private double degreeBonus = 5.00;

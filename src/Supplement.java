@@ -19,6 +19,6 @@ public class Supplement extends Drug{
 
     @Override
     public String getData() {
-        return drugName + indexNumber + weight + leaflet;
+        return drugName + " index: " + indexNumber + " weight: " + weight + " leaflet: " + leaflet;
     }
 }

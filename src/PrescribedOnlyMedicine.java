@@ -23,6 +23,6 @@ public class PrescribedOnlyMedicine extends Drug{
 
     @Override
     public String getData() {
-        return drugName + indexNumber + weight + licenceNumber + theSummaryOfTheMedicinalProduct;
+        return drugName + " index: " + indexNumber + " weight: " + weight + " licence number: " + licenceNumber + " CHPL: " + theSummaryOfTheMedicinalProduct;
     }
 }

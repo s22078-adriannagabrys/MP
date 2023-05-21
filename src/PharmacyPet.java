@@ -21,7 +21,7 @@ public class PharmacyPet extends CommunityPharmacyEmployee implements IDog{
 
     @Override
     public String toString() {
-        return String.format("Pharmacy pet: %s %s");
+        return "Pharmacy pet: " + getNames() + " breed: " + breed + " date of employment: " + getDateOfEmployment();
     }
 
     @Override
