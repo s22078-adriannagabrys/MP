@@ -1,4 +1,3 @@
-import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +10,7 @@ public class Main {
         List<String> names = new ArrayList<>();
         names.add("Anna");
         names.add("Ewa");
-        File file = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
+//        File file = new File("C:\\Users\\s22078\\Desktop\\MAS1\\MP_01.txt");
 
         //Abstract
         System.out.println("Abstract / polimorfizm --------------");
@@ -19,6 +18,11 @@ public class Main {
         Drug supplement = new Supplement("Apetizer", 96766, 5, 16.00, 3, "Don't drive");
         System.out.println(pom.getData());
         System.out.println(supplement.getData());
+
+        Animal cat = new Cat(1, "Azor", 15.00);
+        cat.giveVoice();
+        Animal elephant = new Elephant(2, "Dominik", 5000.00, true);
+        elephant.giveVoice();
 
         //Wielodziedziczenie
         System.out.println("Wielodziedziczenie --------------");
@@ -32,7 +36,7 @@ public class Main {
         CommunityPharmacyEmployee employee = new CommunityPharmacyEmployee(1, Arrays.asList("Alex"), "Kot", LocalDate.of(2000, 11, 16), 28.00, LocalDate.of(2000, 11, 16));
         employee.changeClassToManager("Master", true, 15);
         try {
-            System.out.println(employee.getManager().isHas5YearsOfExperience());
+            System.out.println(employee.getManager().has5YearsOfExperience());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -44,7 +48,7 @@ public class Main {
 
         employee.changeClassToPharmacist("Master", 10, 1234);
         try {
-            System.out.println(employee.getManager().isHas5YearsOfExperience());
+            System.out.println(employee.getManager().has5YearsOfExperience());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -85,7 +89,6 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
 
         List<Drug> drugList = new ArrayList();
         drugList.add(drug1);

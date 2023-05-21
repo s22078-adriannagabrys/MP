@@ -23,16 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40b54b77-66ef-4e6f-bbd9-07119094e69d" name="Changes" comment="Lubie placki2">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2023_11_30__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2023_11_30__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2023_12_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2023_12_29__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CommunityPharmacyEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommunityPharmacyEmployee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Drug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Drug.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Cat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Elephant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PharmacyPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PharmacyPet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PrescribedOnlyMedicine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrescribedOnlyMedicine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Supplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Supplement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

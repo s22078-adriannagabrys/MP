@@ -39,14 +39,14 @@ public class Room {
         try {
             return magazine.getDrugs();
         } catch (Exception ex){
-            throw new Exception("Is not an Magazine");
+            throw new Exception("It is not Magazine");
         }
     }
     public List getLabTools() throws Exception{
         try {
             return lab.getLabTools();
         } catch (Exception ex){
-            throw new Exception("Is not an Lab");
+            throw new Exception("It is not Lab");
         }
     }
 

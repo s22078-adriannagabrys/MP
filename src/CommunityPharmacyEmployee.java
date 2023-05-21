@@ -204,7 +204,7 @@ public class CommunityPharmacyEmployee implements Serializable{
             return getSalaryPerHour() * degreeBonus + extraAmountOfDrugsSoldPerMonth;
         }
 
-        public boolean isHas5YearsOfExperience() {
+        public boolean has5YearsOfExperience() {
             return has5YearsOfExperience;
         }
 
